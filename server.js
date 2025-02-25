@@ -1,7 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const userRoutes = require('./routes/api/users');
-const thoughtRoutes = require('./routes/api/thoughts');
+import express from 'express';
+import mongoose from 'mongoose';
+import userRoutes from './routes/api/users.js';
+import thoughtRoutes from './routes/api/thoughts.js';
 
 // Set up express app
 const app = express();

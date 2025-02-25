@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 // Reaction Schema (Subdocument in Thought)
 const reactionSchema = new Schema({
@@ -50,4 +50,4 @@ thoughtSchema.virtual('reactionCount').get(function() {
 // Create Thought model
 const Thought = mongoose.model('Thought', thoughtSchema);
 
-module.exports = Thought;
+export default Thought;

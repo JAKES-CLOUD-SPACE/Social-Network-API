@@ -1,6 +1,8 @@
-const express = require('express');
+import Thought from '../../models/Thought.js';
+import User from '../../models/User.js';
+import express from 'express';
+
 const router = express.Router();
-const User = require('../../models/User');
 
 // GET all users
 router.get('/', async (req, res) => {
@@ -49,7 +51,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE a user by _id (bonus: also remove associated thoughts)
+// DELETE a user by _id and remove associated thoughts
 router.delete('/:id', async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
@@ -57,7 +59,7 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Also remove thoughts associated with the user
+    // deletes thoughts associated with the user
     await Thought.deleteMany({ username: user.username });
     res.json({ message: 'User and associated thoughts deleted' });
   } catch (err) {
@@ -109,4 +111,4 @@ router.delete('/:userId/friends/:friendId', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

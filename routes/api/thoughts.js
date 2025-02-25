@@ -1,7 +1,8 @@
-const express = require('express');
+import Thought from '../../models/Thought.js';
+import User from '../../models/User.js';
+import express from 'express';
+
 const router = express.Router();
-const Thought = require('../../models/Thought');
-const User = require('../../models/User');
 
 // GET all thoughts
 router.get('/', async (req, res) => {
@@ -102,4 +103,4 @@ router.delete('/:thoughtId/reactions/:reactionId', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
